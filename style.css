@@ -1,0 +1,284 @@
+ * {
+  box-sizing: border-box;
+}
+ 
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #eef2f7;
+  color: #222;
+  line-height: 1.5;
+}
+ 
+/* ---------- Header / Footer ---------- */
+header {
+  background: #25476a;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+}
+header h1 { margin: 0 0 5px; font-size: 1.7rem; }
+header p  { margin: 0; font-size: 0.95rem; opacity: 0.9; }
+ 
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.85rem;
+  color: #555;
+}
+ 
+main {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 12px;
+}
+ 
+/* ---------- Boxes (sections) ---------- */
+.box {
+  background: white;
+  border: 1px solid #c5ced9;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+.box h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #25476a;
+  border-bottom: 2px solid #dde5ee;
+  padding-bottom: 6px;
+}
+.box h3 { margin-bottom: 6px; font-size: 1rem; }
+ 
+/* ---------- Form ---------- */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.form-row label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  font-weight: bold;
+  flex: 1 1 120px;
+}
+input[type="text"], input[type="number"] {
+  margin-top: 4px;
+  padding: 7px;
+  font-size: 1rem;
+  border: 1px solid #99a5b3;
+  border-radius: 4px;
+}
+ 
+/* ---------- Buttons ---------- */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.btn {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { opacity: 0.85; }
+.btn:disabled { background: #b8bfc7 !important; cursor: not-allowed; }
+.blue   { background: #2e6fb5; }
+.green  { background: #2f8f4e; }
+.red    { background: #c0392b; }
+.orange { background: #d98324; }
+.gray   { background: #6c7a89; }
+ 
+.message { min-height: 1.2em; margin: 0 0 8px; color: #c0392b; font-size: 0.9rem; }
+ 
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+th, td {
+  border: 1px solid #c5ced9;
+  padding: 7px 9px;
+  text-align: center;
+}
+th { background: #dde8f4; }
+td.empty, .empty { color: #888; font-style: italic; }
+ 
+.remove-btn {
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 9px;
+  cursor: pointer;
+}
+ 
+.color-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  border: 1px solid #555;
+}
+ 
+/* ---------- Speed slider ---------- */
+.speed { font-size: 0.9rem; display: block; }
+.speed input { vertical-align: middle; }
+ 
+/* ---------- Clock ---------- */
+.clock {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  background: #f3f6fa;
+  border: 1px solid #c5ced9;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 12px;
+}
+ 
+/* ---------- CPU + Ready queue ---------- */
+.cpu-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.cpu-side  { flex: 1 1 220px; }
+.queue-side { flex: 2 1 260px; }
+ 
+.cpu-box {
+  border: 3px solid #25476a;
+  border-radius: 8px;
+  background: #f3f6fa;
+  text-align: center;
+  padding: 16px 8px;
+  transition: background 0.3s;
+}
+.cpu-name { font-size: 2rem; font-weight: bold; }
+.cpu-remaining { font-size: 0.95rem; margin-top: 4px; }
+.cpu-status { margin-top: 8px; font-weight: bold; min-height: 3em; font-size: 0.95rem; }
+ 
+/* flash animations (class is added from JavaScript) */
+.cpu-box.running   { animation: pulse 0.8s; }
+.cpu-box.preempted { animation: flashRed 1s; }
+.cpu-box.completed { animation: flashGreen 1s; }
+ 
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes flashRed {
+  0%   { background: #f5b7b1; transform: translateX(-8px); }
+  30%  { transform: translateX(8px); }
+  60%  { transform: translateX(-4px); }
+  100% { background: #f3f6fa; transform: translateX(0); }
+}
+@keyframes flashGreen {
+  0%   { background: #a9dfbf; }
+  100% { background: #f3f6fa; }
+}
+ 
+.ready-queue {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 70px;
+  padding: 10px;
+  border: 2px dashed #99a5b3;
+  border-radius: 6px;
+  background: #fafbfc;
+  align-items: center;
+}
+.queue-item {
+  border: 2px solid #555;
+  border-radius: 5px;
+  padding: 6px 10px;
+  text-align: center;
+  font-weight: bold;
+  min-width: 60px;
+  animation: slideIn 0.4s;
+}
+.queue-item small { display: block; font-weight: normal; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-15px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+ 
+/* ---------- Event log ---------- */
+.log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #c5ced9;
+  border-radius: 4px;
+  background: #fafbfc;
+  font-size: 0.9rem;
+}
+.log li { padding: 5px 9px; border-bottom: 1px solid #e6ebf1; }
+.log li.preempt  { background: #fdecea; }
+.log li.complete { background: #e6f5ec; }
+.log li.idle     { background: #f0f0f0; color: #666; }
+ 
+/* ---------- Gantt chart ---------- */
+.gantt {
+  display: flex;
+  overflow-x: auto;
+  padding: 5px 5px 30px;
+}
+.gantt-block {
+  position: relative;
+  min-width: 45px;
+  height: 45px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  animation: slideIn 0.4s;
+}
+.gantt-block .t-start,
+.gantt-block .t-end {
+  position: absolute;
+  top: 48px;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+.gantt-block .t-start { left: -4px; }
+.gantt-block .t-end   { right: -4px; }
+ 
+/* ---------- Results ---------- */
+.averages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 12px;
+  font-size: 1.05rem;
+}
+.formula { font-size: 0.85rem; color: #555; }
+ 
+.terms { padding-left: 20px; }
+.terms li { margin-bottom: 4px; }
+ 
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.3rem; }
+  .cpu-name { font-size: 1.6rem; }
+  th, td { padding: 5px; font-size: 0.85rem; }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+}
+ 
